@@ -8,7 +8,6 @@ from sqlalchemy import (
     create_engine,
 )
 from sqlalchemy.orm import declarative_base
-from sqlalchemy_utils import ChoiceType
 
 # cria a conexão do seu banco
 db = create_engine('sqlite:///banco.db')
