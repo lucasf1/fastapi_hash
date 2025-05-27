@@ -22,7 +22,7 @@ async def home():
 
 @auth_router.post('/criar_conta')
 async def criar_conta(
-    usuarioSchema: UsuarioSchema, session:Session = Depends(pegar_sessao)
+    usuarioSchema: UsuarioSchema, session: Session = Depends(pegar_sessao)
 ):
     usuario = session.query(Usuario).filter(Usuario.email == usuarioSchema.email).first()
     if usuario:
@@ -32,7 +32,7 @@ async def criar_conta(
         senha_criptografada = bcrypt_context.hash(usuarioSchema.senha)
 
         # Criar um novo usuário
-        novo_usuario = Usuario(usuarioSchema.nome, usuarioSchema.email, senha_criptografada, 
+        novo_usuario = Usuario(usuarioSchema.nome, usuarioSchema.email, senha_criptografada,
                                usuarioSchema.ativo, usuarioSchema.admin)
         session.add(novo_usuario)
         session.commit()

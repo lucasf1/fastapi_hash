@@ -4,8 +4,6 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from passlib.context import CryptContext
 
-
-
 load_dotenv()
 
 SECRET_KEY = os.getenv('SECRET_KEY')
