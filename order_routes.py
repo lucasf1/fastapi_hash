@@ -31,4 +31,6 @@ async def criar_pedido(
     session.refresh(novo_pedido)
 
     return {
-        'mensagem': f'Pedido criado com sucesso. ID do pedido: {novo_pedido.id}'}
+        'mensagem':
+            f'Pedido criado com sucesso. ID do pedido: {novo_pedido.id}'
+    }
