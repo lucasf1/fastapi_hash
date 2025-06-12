@@ -1,0 +1,9 @@
+import requests
+
+headers = {
+    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0IiwiZXhwIjoxNzUwMzIxNjc4fQ.SO2PIyIHG-gf6xiH-nns2_uuL-96XvflGsYIey7sagU'
+}
+
+requisicao = requests.get('http://127.0.1:8000/auth/refresh', headers=headers)
+print(requisicao)
+print(requisicao.json())
