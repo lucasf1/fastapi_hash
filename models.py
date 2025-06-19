@@ -7,7 +7,7 @@ from sqlalchemy import (
     String,
     create_engine,
 )
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, relationship
 
 # cria a conexão do seu banco
 db = create_engine('sqlite:///banco.db')
@@ -54,13 +54,16 @@ class Pedido(Base):
     status = Column('status', String)
     usuario = Column('usuario', ForeignKey('usuarios.id'))
     preco = Column('preco', Float)
-    # itens =
+    itens = relationship('ItemPedido', cascade='all, delete')
 
     def __init__(self, usuario, status='PENDENTE', preco=0):
         self.usuario = usuario
         self.preco = preco
         self.status = status
 
+    def calcular_preco(self):
+        self.preco = sum(item.quantidade * item.preco_unitario for item in self.itens)
+        
 
 # ItensPedido
 class ItemPedido(Base):
